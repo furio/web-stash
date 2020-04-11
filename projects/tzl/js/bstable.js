@@ -302,13 +302,14 @@ class BSTable {
 
   _rowEdit(button) {                  
   // Indicate user is editing the row
+    let _this = this;
     let $row = $(button).parents('tr');       // access the row
-    var $cols = $row.find('td');              // read rows
+    let $cols = $row.find('td');              // read rows
     if (this.currentlyEditingRow($row)) return;    // not currently editing, return
     //Pone en modo de edición
     this._modifyEachColumn(this.options.editableColumns, $cols, function($td) {  // modify each column
       let content = $td.html();             // read content
-      let div = '<div style="display: none;">' + btoa(content) + '</div>';  // hide content (save for later use)
+      let div = '<div style="display: none;">' + _this.Base64().encode(content) + '</div>';  // hide content (save for later use)
       let input = '<input class="form-control input-sm"  data-original-value="' + content + '" value="' + content + '">';
       $td.html(div + input);                // set content
     });
@@ -338,13 +339,14 @@ class BSTable {
   }
   _rowCancel(button) {
   // Reject the changes
+    let _this = this;
     let $row = $(button).parents('tr');       // access the row
     let $cols = $row.find('td');              // read fields
     if (!this.currentlyEditingRow($row)) return;   // not currently editing, return
 
     // Finish editing the row & delete changes
     this._modifyEachColumn(this.options.editableColumns, $cols, function($td) {  // modify each column
-        let cont = atob($td.find('div').html());    // read div content
+        let cont = _this.Base64().decode($td.find('div').html());    // read div content
         $td.html(cont);                       // set the content and remove the input fields
     });
     this._actionsModeNormal(button);
