@@ -10,7 +10,7 @@
 
 /** @class BSTable class that represents an editable bootstrap table. */
 class BSTable {
-    Base64 = {
+    Base64() { return {
 
         // private property
         _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="
@@ -161,6 +161,8 @@ class BSTable {
         } // End Function _utf8_decode 
 
     }
+  }
+    
   /**
    * Creates an instance of BSTable.
    *
