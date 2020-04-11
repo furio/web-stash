@@ -24,7 +24,7 @@ class BSTable {
     var defaults = {
       editableColumns: null,          // Index to editable columns. If null all td will be editable. Ex.: "1,2,3,4,5"
       $addButton: null,               // Jquery object of "Add" button
-      onTransformEdit: function(text, td) { return text; }
+      onTransformEdit: function(text, td) { return text; },
       onEdit: function() {},          // Called after edition
       onBeforeDelete: function() {},  // Called before deletion
       onDelete: function() {},        // Called after deletion
