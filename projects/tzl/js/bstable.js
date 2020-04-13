@@ -180,7 +180,7 @@ class BSTable {
       onAdd: function() {},           // Called when added a new row
       advanced: {                     // Do not override advanced unless you know what youre doing
           columnLabel: 'Actions',
-          buttonHTML: `<div class="btn-group pull-right">
+          buttonHTML: `<div class="btn-group float-right">
                 <button id="bEdit" type="button" class="btn btn-sm btn-default">
                     <span class="fa fa-edit" > </span>
                 </button>
